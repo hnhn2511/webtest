@@ -8,7 +8,7 @@ function Contenthome(props: IDatacop) {
 
     const { items } = props;
 
-    const itemsPerPage = 1;
+    const itemsPerPage = 15;
     const totalPages = Math.ceil(items.length / itemsPerPage);
 
     const paginatedData = Array.from({ length: totalPages }, (_, index) =>

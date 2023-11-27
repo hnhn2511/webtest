@@ -7,7 +7,7 @@ function Footer() {
     return (
         <>
             {/* IV.Footer */}
-            <footer>
+            <footer style={{marginTop :'25px'}}>
               <div className={facebook.footer}>
                 <div className={facebook.footerLine} >
                     <Link href={'#'} className={facebook.footerLinelink} >Top</Link>
