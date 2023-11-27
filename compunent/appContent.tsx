@@ -3,7 +3,7 @@ import facebook from '../styles/facebook.module.css';
 import Link from 'next/link';
 import ReactPaginate from 'react-paginate';
 import { useState } from 'react';
-import '../styles/paginate.css';
+// import '../styles/paginate.css';
 
 function Contenthome(props: IDatacop) {
 
@@ -61,7 +61,7 @@ function Contenthome(props: IDatacop) {
                 nextLinkClassName="page-link"
                 breakClassName="page-item"
                 breakLinkClassName="page-link"
-                containerClassName={"custom-pagination"}
+                containerClassName="pagination"
                 activeClassName="active"
             />
         </>
