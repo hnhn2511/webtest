@@ -46,12 +46,12 @@ function Contenthome(props: IDatacop) {
 
             <ReactPaginate
                 breakLabel="..."
-                nextLabel="Tiến >"
+                nextLabel="Next >"
                 onPageChange={handlePageChange}
                 pageRangeDisplayed={2}
                 marginPagesDisplayed={2}
                 pageCount={Math.ceil(items.length / itemsPerPage)}
-                previousLabel="< Lùi"
+                previousLabel="< Previous"
                 renderOnZeroPageCount={null}
                 pageClassName="page-item"
                 pageLinkClassName="page-link"
