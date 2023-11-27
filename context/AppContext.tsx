@@ -1,9 +1,13 @@
 'use client'
 
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import facebook from '../styles/facebook.module.css';
 import { useRouter, usePathname } from 'next/navigation';
 import useSWR from 'swr';
+
+interface AppProviderProps {
+    children: ReactNode;
+}
 
 export const AppContext = createContext<ContextProps>({
 
@@ -18,7 +22,7 @@ export const AppContext = createContext<ContextProps>({
     handleBtn2: () => { },
 });
 
-export const AppProvider = ({ children }) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
 
     // GET API
     const fetcher = (url: string) => fetch(url, {
