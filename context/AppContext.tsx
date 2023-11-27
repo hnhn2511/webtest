@@ -70,8 +70,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         if (btn1 === clickOn) {
             return
         } else {
-            setBtn1(clickOn);
-            setBtn2(clickOff);
             return router.push(`/`)
         }
 
@@ -82,8 +80,6 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         if (btn2 === clickOn) {
             return
         } else {
-            setBtn2(clickOn);
-            setBtn1(clickOff);
             return router.push(`/video/hot`)
         }
 
