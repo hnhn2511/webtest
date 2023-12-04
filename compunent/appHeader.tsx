@@ -6,16 +6,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilm, faHouse, faImage, faBookOpen, faMusic } from "@fortawesome/free-solid-svg-icons";
 import { useContext , useEffect , useState } from 'react';
 import { AppContext } from '../context/AppContext';
-import { useRouter } from 'next/navigation';
+import { useRouter ,  usePathname } from 'next/navigation';
 
 function Header() {
 
     const { getinput, setInput } = useContext(AppContext);
 
     const router = useRouter();
+    const pathname = usePathname();
 
 
     const [searchValue, setSearchValue] = useState('');
+    const [setcolor, setSetColor] = useState('');
 
 
     const getkey = (e: any) => {
@@ -30,6 +32,15 @@ function Header() {
             setInput('');
         }
     }, [searchValue, router]);
+
+    useEffect(() => {
+        console.log(pathname)
+        if (pathname === '/' || pathname === '/video') {
+            setSetColor('#0548bd');
+        } else {
+            setSetColor('');
+        }
+    }, [pathname]);
 
 
     return (
@@ -56,7 +67,7 @@ function Header() {
                         <li className={facebook.headerNavbarlistbtnItem}>
                             <Link title='Trang chủ' href={'/'} className={facebook.headerNavbarlink}>
                                 <button className={facebook.headerNavbarbtn}>
-                                    <FontAwesomeIcon icon={faHouse} className={facebook.headerNavbarbtnIcon} />
+                                    <FontAwesomeIcon icon={faHouse} style={{color : setcolor}} className={facebook.headerNavbarbtnIcon} />
                                 </button>
                             </Link>
                         </li>
