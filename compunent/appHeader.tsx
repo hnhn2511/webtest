@@ -17,7 +17,10 @@ function Header() {
 
 
     const [searchValue, setSearchValue] = useState('');
-    const [setcolor, setSetColor] = useState('');
+    const [setcolorHome, setSetColorhome] = useState('');
+    const [setcolorVideo, setSetColorvideo] = useState('');
+    const setcolorOn:string = '#0548bd';
+    const setcolorOff:string = '';
 
 
     const getkey = (e: any) => {
@@ -34,10 +37,13 @@ function Header() {
     }, [searchValue, router]);
 
     useEffect(() => {
-        if (pathname === '/' || pathname === '/video') {
-            setSetColor('#0548bd');
-        } else {
-            setSetColor('');
+        if (pathname === '/video') {
+            setSetColorvideo(setcolorOn);
+            setSetColorhome(setcolorOff)
+        } 
+        if (pathname === '/' ) {
+            setSetColorhome(setcolorOn);
+            setSetColorvideo(setcolorOff)
         }
     }, [pathname]);
 
@@ -57,16 +63,16 @@ function Header() {
                             </Link>
                         </li>
                         <li className={facebook.headerNavbarlistbtnItem}>
-                            <Link href={'#'} title='' className={facebook.headerNavbarlink}>
-                                <button className={facebook.headerNavbarbtnOut}>
-                                    <FontAwesomeIcon icon={faFilm} className={facebook.headerNavbarbtnIcon} />
+                            <Link href={'/video'} title='Video' className={facebook.headerNavbarlink}>
+                                <button className={facebook.headerNavbarbtn}>
+                                    <FontAwesomeIcon icon={faFilm} style={{color : setcolorVideo}} className={facebook.headerNavbarbtnIcon} />
                                 </button>
                             </Link>
                         </li>
                         <li className={facebook.headerNavbarlistbtnItem}>
                             <Link title='Trang chủ' href={'/'} className={facebook.headerNavbarlink}>
                                 <button className={facebook.headerNavbarbtn}>
-                                    <FontAwesomeIcon icon={faHouse} style={{color : setcolor}} className={facebook.headerNavbarbtnIcon} />
+                                    <FontAwesomeIcon icon={faHouse} style={{color : setcolorHome}} className={facebook.headerNavbarbtnIcon} />
                                 </button>
                             </Link>
                         </li>

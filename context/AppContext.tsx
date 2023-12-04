@@ -55,7 +55,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
 
     useEffect(() => {
         setCurrentPath(pathname);
-        if (currentPath === '/' || currentPath === '/video') {
+        if (currentPath === '/video') {
             setBtn1(clickOn);
             setBtn2(clickOff);
         }
@@ -70,7 +70,7 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         if (btn1 === clickOn) {
             return
         } else {
-            return router.push(`/`)
+            return router.push(`/video`)
         }
 
     }
