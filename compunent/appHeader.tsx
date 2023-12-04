@@ -34,7 +34,6 @@ function Header() {
     }, [searchValue, router]);
 
     useEffect(() => {
-        console.log(pathname)
         if (pathname === '/' || pathname === '/video') {
             setSetColor('#0548bd');
         } else {
