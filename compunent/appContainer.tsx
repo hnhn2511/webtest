@@ -1,42 +1,36 @@
 'use client'
 
 import facebook from '../styles/facebook.module.css';
-import { faCaretDown, faCaretUp, faFire, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faFire, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Contenthome from './appContent';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
-import Head from 'next/head';
-
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 function Container() {
 
-    const { data, error, isLoading, btn1, btn2, handleBtn1, handleBtn2 } = useContext(AppContext);
+    const { getdataVideo } = useContext(AppContext);
 
+    const [datasort, setdataSort] = useState<any[]>([]);
+    const [filteredDb, setfilteredDb] = useState<any[]>([]);
+    const [value, setValue] = useState(0);
 
-    if (error) {
-        return (
-            <>
-                <div className={facebook.container} style={{ marginBottom: '50px' }}>
-                    <div className={facebook.gird}>
-                        <div className={facebook.row}>
-                            <div className={facebook.columm1}></div>
-                            <div className={facebook.columm10}>
-                                <div className={facebook.columm10Product}>
-                                    <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
-                                        <div className={facebook.fetch}>failed to load</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={facebook.columm1}></div>
-                        </div>
-                    </div>
-                </div>
-            </>
-        )
-    };
+    useEffect(() => {
+        if (getdataVideo) {
+            const dataArray = Object.keys(getdataVideo).map((key, index) => {
+                const id = index + 1;
+                const item = getdataVideo[key];
+                return { id, ...item };
+            });
+            const sort = dataArray?.sort((a: any, b: any) => b.id - a.id);
+            setdataSort(sort);
+            setfilteredDb(dataArray);
+        }
+    }, [getdataVideo]);
 
-    if (isLoading) {
+    if (!getdataVideo) {
         return (
             <>
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
@@ -58,49 +52,51 @@ function Container() {
         )
     };
 
-    // Chuyển đổi
-    const dataArray = Object.keys(data).map((key, index) => {
-        const id = index + 1;
-        const item = data[key];
-        return { id, ...item };
-    });
-
-
+    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+        setValue(newValue);
+        switch (newValue) {
+            case 0:
+                // Thực hiện chức năng khi chọn Tab 1
+                const sort = filteredDb?.sort((a: any, b: any) => b.id - a.id)
+                setdataSort(sort)
+                break;
+            case 1:
+                // Thực hiện chức năng khi chọn Tab 2
+                const sort1 = filteredDb?.sort((a: any, b: any) => b.view - a.view)
+                setdataSort(sort1)
+                break;
+        }
+    };
 
     return (
         <>
-        <Head>
-        <title>Trang của tôi</title>
-        <meta name="description" content="Mô tả của trang web của bạn ở đây" />
-      </Head>
             {/*  III. Content */}
             <div className={facebook.container}>
                 <div className={facebook.gird}>
                     <div className={facebook.row}>
                         <div className={facebook.columm1Fixel}>
                             <div className={facebook.columm1Left}>
-                                <div className={facebook.columm1Leftdiv} >
-                                    <FontAwesomeIcon icon={faCaretDown} className={facebook.columm1LeftdivIcon} />
-                                </div>
 
-                                <ul className={facebook.columm1Leftul}>
-                                    <li className={facebook.columm1LeftulLi}><button title='Mới nhất' className={btn1} onClick={() => handleBtn1()}><FontAwesomeIcon icon={faClock} className={facebook.columm1LeftulLibtnIcon} /></button></li>
-                                    <li className={facebook.columm1LeftulLi}><button title='Phổ biến' className={btn2} onClick={() => handleBtn2()}><FontAwesomeIcon icon={faFire} className={facebook.columm1LeftulLibtnIcon} /></button></li>
-                                </ul>
+                                <Tabs
+                                    value={value}
+                                    onChange={handleChange}
+                                    orientation="vertical"
+                                    variant="scrollable"
+                                    aria-label="Chức năng"
+                                    indicatorColor="none"
+                                    className={facebook.Tabui}
+                                >
+                                    <Tab icon={<FontAwesomeIcon icon={faClock} className={facebook.columm1LeftulLibtnIcon} />} disableRipple title='Mới nhất' />
+                                    <Tab icon={<FontAwesomeIcon icon={faFire} className={facebook.columm1LeftulLibtnIcon} />} disableRipple title='Phổ biến' />
+                                </Tabs>
 
-                                <div className={facebook.columm1Leftdiv} style={{
-                                    borderTopLeftRadius: '0px', borderTopRightRadius: '0px',
-                                    borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px'
-                                }} >
-                                    <FontAwesomeIcon icon={faCaretUp} className={facebook.columm1LeftdivIcon} />
-                                </div>
                             </div>
                         </div>
                         <div className={facebook.columm1}></div>
                         <div className={facebook.columm10}>
                             <div className={facebook.columm10Product}>
-                                <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
-                                    <Contenthome items={dataArray?.sort((a: any, b: any) => b.id - a.id)} />
+                                <div className={`${facebook.row} ${facebook.rowcolumm10}`} style={{ minHeight: '550px' }}>
+                                    <Contenthome items={datasort}/>
                                 </div>
                             </div>
 

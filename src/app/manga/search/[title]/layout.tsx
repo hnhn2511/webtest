@@ -1,7 +1,7 @@
 
 export const metadata = {
-  title: 'Phổ biến',
-  description: 'Trang phổ biến của Lib Coop',
+  title: 'Tìm kiếm',
+  description: 'Trang tìm kiếm Manga của Lib Coop',
 }
 
 export default function RootLayout({

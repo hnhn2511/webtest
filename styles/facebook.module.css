@@ -74,7 +74,7 @@
     border-radius: 10px;
 }
 
-.headerNavbarbtnOut{
+.headerNavbarbtnOut {
     text-decoration: none;
     background-color: transparent;
     border: none;
@@ -84,7 +84,7 @@
     flex: 1;
     display: flex;
     align-items: center;
-    cursor : text !important
+    cursor: text !important
 }
 
 .headerNavbarlistbtnItem+.headerNavbarlistbtnItem {
@@ -258,7 +258,7 @@
 }
 
 
-.columm10colummContentlink{
+.columm10colummContentlink {
     text-decoration: none;
 }
 
@@ -421,7 +421,7 @@
 .footerIframeh6 {
     font-size: 1.2rem;
     margin: 0;
-    min-width:113px
+    min-width: 113px
 }
 
 .footerIframeul {
@@ -429,8 +429,7 @@
     display: flex;
     margin: 0;
     padding-left: 16px;
-    flex:1
-
+    flex: 1
 }
 
 .footerIframebtn {
@@ -499,7 +498,7 @@
 
 .rowcolumm10InfocodeSpan {
     margin-left: 10px;
-    flex:1
+    flex: 1
 }
 
 .rowcolumm10Infomaker {
@@ -511,17 +510,47 @@
 .rowcolumm10InfomakerH6 {
     margin: 0;
     margin-left: 10px;
-    flex:1
+    flex: 1
 }
 
-.rowcolumm10Infostars{
+.rowcolumm10Infostars {
     display: flex;
     align-items: center;
     min-width: 54px;
 }
 
-.rowcolumm10InfostarsA{
+.rowcolumm10InfostarsA {
     text-decoration: none;
     margin-left: 10px;
-    flex:1
+    flex: 1
+}
+
+/* VII Manga */
+
+.rowcolumm10Codemanga {
+    display: flex;
+    justify-content: space-between;
+    min-width: 80px;
+    align-items: center;
+}
+
+.Tabui {
+    color: black;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+
+}
+
+.textfield {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px 5px 0 5px !important;
+}
+
+.textTabs {
+    height: 320px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
 }

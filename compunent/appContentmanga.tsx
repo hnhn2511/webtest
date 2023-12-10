@@ -4,15 +4,15 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { Pagination } from '@mui/material';
 
-function Contenthome(props: IDatacop) {
+function ContenthomeManga(props: IDatacopManga) {
 
-    const { items } = props;
+    const { itemsManga } = props;
 
     const itemsPerPage = 15;
-    const totalPages = Math.ceil(items.length / itemsPerPage);
+    const totalPages = Math.ceil(itemsManga.length / itemsPerPage);
 
     const paginatedData = Array.from({ length: totalPages }, (_, index) =>
-        items.slice(index * itemsPerPage, (index + 1) * itemsPerPage)
+        itemsManga.slice(index * itemsPerPage, (index + 1) * itemsPerPage)
     );
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -29,13 +29,13 @@ function Contenthome(props: IDatacop) {
                 return (
                     <div key={item.id} className={facebook.columm10columm}>
                         <div className={facebook.columm10colummContent}>
-                            <Link href={`/video/watch/${item.Title}/${item.id}`} className={facebook.columm10colummContentlink}>
+                            <Link href={`/manga/view/${item.name}/${item.id}`} className={facebook.columm10colummContentlink}>
                                 <div className={facebook.columm10colummContentframe}>
-                                    <div className={facebook.columm10colummContentimg} style={{ backgroundImage: `url(${item.image}${item.imagesize})` }} title={item.Title}></div>
+                                    <div className={facebook.columm10colummContentimg} style={{ backgroundImage: `url(${item.image})` }} title={item.name}></div>
                                 </div>
                             </Link>
-                            <Link href={`/video/watch/${item.Title}/${item.id}`} className={facebook.columm10colummContentlink}>
-                                <h4 className={facebook.columm10colummContenth4} title={item.Title}>{item.Title}</h4>
+                            <Link href={`/manga/view/${item.name}/${item.id}`} className={facebook.columm10colummContentlink}>
+                                <h4 className={facebook.columm10colummContenth4} title={item.name}>{item.name}</h4>
                             </Link>
                             <div className={facebook.columm10colummContentOther}>
                                 <span className={facebook.columm10colummContentDay} title={item.Dayupload}>{item.Dayupload}</span>
@@ -60,4 +60,4 @@ function Contenthome(props: IDatacop) {
 }
 
 
-export default Contenthome;
+export default ContenthomeManga;

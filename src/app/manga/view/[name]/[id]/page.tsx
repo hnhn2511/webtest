@@ -1,9 +1,10 @@
 'use client'
 
-import Iframecontent from '../../../../../../compunent/appIframecontent';
-import { useContext , useEffect , useState} from 'react';
+import Picturecontent from '../../../../../../compunent/appPicturecontent';
+import { useContext ,  useState , useEffect } from 'react';
 import { AppContext } from '../../../../../../context/AppContext';
 import facebook from '../../../../../../styles/facebook.module.css';
+
 
 function Title({ params }: { params: { id: string } }) {
 
@@ -12,22 +13,22 @@ function Title({ params }: { params: { id: string } }) {
     // Chuyển đổi params thành string
     const decodedid = decodeURIComponent(id);
 
-    const { getdataVideo } = useContext(AppContext);
+    const { getdataManga } = useContext(AppContext);
     const [data, setdata] = useState<any[]>([]);
 
     useEffect(() => {
-        if (getdataVideo) {
-            const dataArray = Object.keys(getdataVideo).map((key, index) => {
+        if (getdataManga) {
+            const dataArray = Object.keys(getdataManga).map((key, index) => {
                 const id = index + 1;
-                const item = getdataVideo[key];
+                const item = getdataManga[key];
                 return { id, ...item };
             });
             const filter = dataArray?.filter((a: any) => a.id === (parseInt(decodedid, 10)));
             setdata(filter);
         }
-    }, [decodedid,getdataVideo]);
+    }, [decodedid,getdataManga]);
 
-    if (!getdataVideo || data.length === 0) {
+    if (!getdataManga || data.length === 0) {
         return (
             <>
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
@@ -51,7 +52,7 @@ function Title({ params }: { params: { id: string } }) {
 
     return (
         <>
-            <Iframecontent items={data}></Iframecontent>
+            <Picturecontent itemsManga={data}></Picturecontent>
         </>
 
     )

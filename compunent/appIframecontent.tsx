@@ -9,6 +9,7 @@ function Iframecontent(props: IDatacop) {
 
     const { items } = props;
 
+
     // Btn
     const getserverOn: string = facebook.footerIframebtnActive;
     const getserverOff: string = '';
@@ -96,14 +97,14 @@ function Iframecontent(props: IDatacop) {
                                                         <span className={facebook.rowcolumm10InfocodeSpan} title={item.code}>{item.code}</span>
                                                     </div>
                                                     <div className={facebook.rowcolumm10Infomaker}>
-                                                        <h6 className={facebook.rowcolumm10InfocodeH6}>Maker :</h6>
+                                                        <h6 className={facebook.rowcolumm10InfocodeH6} title='Maker'>Maker :</h6>
                                                         <Link href={`/video/search/${item.type}`} className={facebook.columm10colummContentlink}>
-                                                        <h6 className={facebook.rowcolumm10InfomakerH6} style={{ color: 'black' }}>{item.type}</h6>
+                                                        <h6 className={facebook.rowcolumm10InfomakerH6} style={{ color: 'black' }} title={item.type}>{item.type}</h6>
                                                         </Link>
                                                     </div>
                                                     <div className={facebook.rowcolumm10Infostars}>
-                                                        <h6 className={facebook.rowcolumm10InfocodeH6}>Stars :</h6>
-                                                        <Link href={item.starsinfo} target="_blank" className={facebook.rowcolumm10InfostarsA} style={{fontSize: '1.1rem' , color: 'black'}}>{item.stars}</Link>
+                                                        <h6 className={facebook.rowcolumm10InfocodeH6} title='Diễn viên'>Stars :</h6>
+                                                        <Link href={item.starsinfo} target="_blank" className={facebook.rowcolumm10InfostarsA} style={{fontSize: '1.1rem' , color: 'black'}} title={item.stars}>{item.stars}</Link>
                                                     </div>
                                                 </div>
                                             </div>

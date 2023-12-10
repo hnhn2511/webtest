@@ -1,9 +1,9 @@
 'use client'
 
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
-import facebook from '../styles/facebook.module.css';
 import { useRouter, usePathname } from 'next/navigation';
-import useSWR from 'swr';
+import GetAPI from '../compunent/appGetAPI';
+import GetAPImanga from '../compunent/appGetAPImanga';
 
 interface AppProviderProps {
     children: ReactNode;
@@ -13,82 +13,46 @@ export const AppContext = createContext<ContextProps>({
 
     getinput: '',
     setInput: (): string => '',
-    data: null,
-    error: null,
-    isLoading: false,
-    btn1: '',
-    btn2: '',
-    handleBtn1: () => { },
-    handleBtn2: () => { },
+    // Get Data video
+    getdataVideo: null,
+    // Get Data Manga
+    getdataManga: null
+
 });
 
 export const AppProvider = ({ children }: AppProviderProps) => {
 
-    // GET API
-    const fetcher = (url: string) => fetch(url, {
-        method: 'GET',
-
-    }).then(res => res.json())
-    const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_DATABASE_URL, fetcher, {
-        revalidateIfStale: false,
-        revalidateOnFocus: false,
-        revalidateOnReconnect: false,
-    });
-
-
     const router = useRouter();
     const pathname = usePathname();
 
-    // State Input
 
+    // State Input
     const [getinput, setInput] = useState('');
 
-    // State btn + Pathname
+    // State API
+    const [getdataVideo, setGetdataVideo] = useState<DataFromAPI | null>(null);
+    const [getdataManga, setGetdataManga] = useState<DataFromAPImanga | null>(null);
 
-    const [currentPath, setCurrentPath] = useState<string>('');
+    const apiData = GetAPI();
+    const apiDataManga = GetAPImanga();
 
-    const clickOn: string = (facebook.columm1LeftulLibtnClick);
-    const clickOff: string = (facebook.columm1LeftulLibtn);
-    const [btn1, setBtn1] = useState<string>(clickOff);
-    const [btn2, setBtn2] = useState<string>(clickOff);
-
-
+ 
     useEffect(() => {
-        setCurrentPath(pathname);
-        if (currentPath === '/video') {
-            setBtn1(clickOn);
-            setBtn2(clickOff);
+        if (apiData) {
+            setGetdataVideo(apiData);
         }
-        if (currentPath === '/video/hot') {
-            setBtn1(clickOff);
-            setBtn2(clickOn);
+    }, [apiData]);
+    useEffect(() => {
+        if (apiDataManga) {
+            setGetdataManga(apiDataManga);
         }
-    });
+    }, [apiDataManga]);
 
-    //Btn1
-    const handleBtn1 = () => {
-        if (btn1 === clickOn) {
-            return
-        } else {
-            return router.push(`/video`)
-        }
-
-    }
-
-    // Btn2
-    const handleBtn2 = () => {
-        if (btn2 === clickOn) {
-            return
-        } else {
-            return router.push(`/video/hot`)
-        }
-
-    }
 
 
     return (
         <AppContext.Provider value={{
-            getinput, setInput, data, error, isLoading, btn1, btn2, handleBtn1, handleBtn2
+            getinput, setInput, getdataVideo , getdataManga
         }}>
             {children}
         </AppContext.Provider>

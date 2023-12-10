@@ -2,14 +2,14 @@
 
 import { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../../../../context/AppContext';
-import Contenthome from '../../../../../compunent/appContent';
+import ContenthomeManga from '../../../../../compunent/appContentmanga';
 import facebook from '../../../../../styles/facebook.module.css';
 import { faFire, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
-function Title({ params }: { params: { title: string } }) {
+function TitleManga({ params }: { params: { title: string } }) {
 
     // Lấy params
     const title = params.title;
@@ -17,27 +17,27 @@ function Title({ params }: { params: { title: string } }) {
     // Chuyển đổi params thành string
     const decodedTitle = decodeURIComponent(title);
 
-    const {getdataVideo} = useContext(AppContext);
+    const {getdataManga} = useContext(AppContext);
 
     const [datasort, setdataSort] = useState<any[]>([]);
     const [filteredDb, setfilteredDb] = useState<any[]>([]);
     const [value, setValue] = useState(0);
 
     useEffect(() => {
-        if (getdataVideo) {
-            const dataArray = Object.keys(getdataVideo).map((key, index) => {
+        if (getdataManga) {
+            const dataArray = Object.keys(getdataManga).map((key, index) => {
                 const id = index + 1;
-                const item = getdataVideo[key];
+                const item = getdataManga[key];
                 return { id, ...item };
             });
-            const filteredData = dataArray.filter((a: any) => a.Title.toLowerCase().includes(decodedTitle.toLowerCase()));
+            const filteredData = dataArray.filter((a: any) => a.name.toLowerCase().includes(decodedTitle.toLowerCase()));
             const sort = filteredData?.sort((a: any, b: any) => b.id - a.id);
             setdataSort(sort);
             setfilteredDb(filteredData);
         }
-    }, [decodedTitle,getdataVideo]);
+    }, [getdataManga, decodedTitle]);
 
-    if (!getdataVideo) {
+    if (!getdataManga) {
         return (
             <>
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
@@ -103,7 +103,7 @@ function Title({ params }: { params: { title: string } }) {
                 <div className={facebook.gird}>
                     <div className={facebook.row}>
                     <div className={facebook.columm1Fixel}>
-                            <div className={facebook.columm1Left} >
+                            <div className={facebook.columm1Left}>
                             <Tabs
                                     value={value}
                                     onChange={handleChange}
@@ -121,8 +121,8 @@ function Title({ params }: { params: { title: string } }) {
                         <div className={facebook.columm1}></div>
                         <div className={facebook.columm10}>
                             <div className={facebook.columm10Product}>
-                                <div className={`${facebook.row} ${facebook.rowcolumm10}`} style={{minHeight:'550px'}}>
-                                    <Contenthome items={datasort} />
+                                <div className={`${facebook.row} ${facebook.rowcolumm10}`}  style={{minHeight:'550px'}}>
+                                    <ContenthomeManga itemsManga={datasort} />
 
                                 </div>
                             </div>
@@ -135,4 +135,4 @@ function Title({ params }: { params: { title: string } }) {
 
     )
 }
-export default Title;
+export default TitleManga;

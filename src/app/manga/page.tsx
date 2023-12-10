@@ -1,5 +1,5 @@
 
-import Container from '../../../compunent/appContainer';
+import Containermanga from '../../../compunent/appContainermanga';
 import type { Metadata } from 'next';
 
 
@@ -12,7 +12,7 @@ function Manga() {
 
 
     return (
-        <Container></Container>
+        <Containermanga></Containermanga>
     )
 }
 export default Manga;
