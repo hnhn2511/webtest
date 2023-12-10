@@ -17,7 +17,7 @@ function Title({ params }: { params: { title: string } }) {
     // Chuyển đổi params thành string
     const decodedTitle = decodeURIComponent(title);
 
-    const {getdataVideo} = useContext(AppContext);
+    const { getdataVideo } = useContext(AppContext);
 
     const [datasort, setdataSort] = useState<any[]>([]);
     const [filteredDb, setfilteredDb] = useState<any[]>([]);
@@ -35,7 +35,7 @@ function Title({ params }: { params: { title: string } }) {
             setdataSort(sort);
             setfilteredDb(filteredData);
         }
-    }, [decodedTitle,getdataVideo]);
+    }, [decodedTitle, getdataVideo]);
 
     if (!getdataVideo) {
         return (
@@ -102,15 +102,19 @@ function Title({ params }: { params: { title: string } }) {
             <div className={facebook.container} style={{ marginBottom: '50px' }}>
                 <div className={facebook.gird}>
                     <div className={facebook.row}>
-                    <div className={facebook.columm1Fixel}>
+                        <div className={facebook.columm1Fixel}>
                             <div className={facebook.columm1Left} >
-                            <Tabs
+                                <Tabs
                                     value={value}
                                     onChange={handleChange}
                                     orientation="vertical"
                                     variant="scrollable"
                                     aria-label="Vertical tabs example"
-                                    indicatorColor="none"
+                                    sx={{
+                                        '& .MuiTabs-indicator': {
+                                            display: 'none'
+                                        }
+                                    }}
                                     className={facebook.Tabui}
                                 >
                                     <Tab icon={<FontAwesomeIcon icon={faClock} className={facebook.columm1LeftulLibtnIcon} />} disableRipple title='Mới nhất' />
@@ -121,7 +125,7 @@ function Title({ params }: { params: { title: string } }) {
                         <div className={facebook.columm1}></div>
                         <div className={facebook.columm10}>
                             <div className={facebook.columm10Product}>
-                                <div className={`${facebook.row} ${facebook.rowcolumm10}`} style={{minHeight:'550px'}}>
+                                <div className={`${facebook.row} ${facebook.rowcolumm10}`} style={{ minHeight: '550px' }}>
                                     <Contenthome items={datasort} />
 
                                 </div>
