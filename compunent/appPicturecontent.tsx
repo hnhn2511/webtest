@@ -146,8 +146,10 @@ function Picturecontent(props: IDatacopManga) {
                                             value={value}
                                             onChange={handleChange}
                                             aria-label="Vertical tabs example"
-                                            indicatorColor="none"
                                             sx={{
+                                                '& .MuiTabs-indicator': {
+                                                    display: 'none'
+                                                },
                                                 height: { height }
                                             }}
 

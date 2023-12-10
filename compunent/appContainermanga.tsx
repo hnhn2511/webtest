@@ -85,7 +85,11 @@ function Containermanga() {
                                     orientation="vertical"
                                     variant="scrollable"
                                     aria-label="Chức năng"
-                                    indicatorColor="none"
+                                    sx={{
+                                        '& .MuiTabs-indicator': {
+                                            display: 'none'
+                                        }
+                                    }}
                                     className={facebook.Tabui}
                                 >
                                     <Tab icon={<FontAwesomeIcon icon={faClock} className={facebook.columm1LeftulLibtnIcon} />} disableRipple title='Mới nhất' />

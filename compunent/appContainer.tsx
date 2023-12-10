@@ -83,7 +83,11 @@ function Container() {
                                     orientation="vertical"
                                     variant="scrollable"
                                     aria-label="Chức năng"
-                                    indicatorColor="none"
+                                    sx={{
+                                        '& .MuiTabs-indicator': {
+                                            display: 'none'
+                                        }
+                                    }}
                                     className={facebook.Tabui}
                                 >
                                     <Tab icon={<FontAwesomeIcon icon={faClock} className={facebook.columm1LeftulLibtnIcon} />} disableRipple title='Mới nhất' />
@@ -96,7 +100,7 @@ function Container() {
                         <div className={facebook.columm10}>
                             <div className={facebook.columm10Product}>
                                 <div className={`${facebook.row} ${facebook.rowcolumm10}`} style={{ minHeight: '550px' }}>
-                                    <Contenthome items={datasort}/>
+                                    <Contenthome items={datasort} />
                                 </div>
                             </div>
 
