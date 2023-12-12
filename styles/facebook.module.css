@@ -246,6 +246,11 @@
     margin-bottom: 10px;
 }
 
+.columm10columm3 {
+    width: calc(100%/4);
+}
+
+
 .columm10colummContent {
     background-color: white;
     border-bottom-left-radius: 5px;
@@ -274,6 +279,10 @@
     background-size: contain;
     transition: transform ease-out 0.3s;
     will-change: transform;
+}
+
+.columm10colummContentimg60{
+    padding-top: 70%;
 }
 
 .columm10colummContentimg:hover {
@@ -553,4 +562,6 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: rgba(255, 255, 255, 0.2);
+
 }
+

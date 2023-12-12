@@ -1,9 +1,10 @@
 'use client'
 
-import Picturecontent from '../../../../../../compunent/appPicturecontent';
-import { useContext ,  useState , useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { AppContext } from '../../../../../../context/AppContext';
 import facebook from '../../../../../../styles/facebook.module.css';
+import Picturecontent from '../../../../../../compunent/appPicturecontent';
+
 
 
 function Title({ params }: { params: { id: string } }) {
@@ -16,6 +17,9 @@ function Title({ params }: { params: { id: string } }) {
     const { getdataManga } = useContext(AppContext);
     const [data, setdata] = useState<any[]>([]);
 
+    const [roll , setRoll]=useState<boolean>(true);
+    const [height, setHeight] = useState<string>('320px');
+
     useEffect(() => {
         if (getdataManga) {
             const dataArray = Object.keys(getdataManga).map((key, index) => {
@@ -25,8 +29,18 @@ function Title({ params }: { params: { id: string } }) {
             });
             const filter = dataArray?.filter((a: any) => a.id === (parseInt(decodedid, 10)));
             setdata(filter);
+            if (Object.keys(filter[0].Pagefull).length < 5) {
+                setHeight(`176px`);
+                setRoll(true)
+            }
+    
+            if (Object.keys(filter[0].Pagefull).length === 5) {
+                setHeight(`252px`);
+                setRoll(false)
+            }
         }
-    }, [decodedid,getdataManga]);
+    }, [decodedid, getdataManga]);
+    
 
     if (!getdataManga || data.length === 0) {
         return (
@@ -38,7 +52,7 @@ function Title({ params }: { params: { id: string } }) {
                             <div className={facebook.columm10}>
                                 <div className={facebook.columm10Product}>
                                     <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
-                                        <div className={facebook.fetch}>loading...</div>
+                                        <div className={facebook.fetch}></div>
                                     </div>
                                 </div>
                             </div>
@@ -50,9 +64,17 @@ function Title({ params }: { params: { id: string } }) {
         )
     };
 
+
     return (
         <>
-            <Picturecontent itemsManga={data}></Picturecontent>
+            <div className={facebook.container} style={{ marginBottom: '50px' }}>
+                <div className={facebook.gird}>
+                    <div className={facebook.row}>
+                        <Picturecontent itemsManga={data} itemsRoll={roll} itemsHeight={height}/>
+                        <div className={`${facebook.columm1} ${facebook.columm15}`}></div>
+                    </div>
+                </div >
+            </div >
         </>
 
     )

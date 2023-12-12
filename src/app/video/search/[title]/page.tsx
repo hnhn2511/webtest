@@ -43,15 +43,15 @@ function Title({ params }: { params: { title: string } }) {
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
                     <div className={facebook.gird}>
                         <div className={facebook.row}>
-                            <div className={facebook.columm1}></div>
-                            <div className={facebook.columm10}>
+                            <div className={facebook.columm1} style={{width: "calc((1.5*100%)/12)"}}></div>
+                            <div className={facebook.columm10} style={{width: "calc((9*100%)/12)"}}>
                                 <div className={facebook.columm10Product}>
                                     <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
                                         <div className={facebook.fetch}>loading...</div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={facebook.columm1}></div>
+                            <div className={facebook.columm1} style={{width: "calc((1.5*100%)/12)"}}></div>
                         </div>
                     </div>
                 </div>
@@ -65,15 +65,15 @@ function Title({ params }: { params: { title: string } }) {
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
                     <div className={facebook.gird}>
                         <div className={facebook.row}>
-                            <div className={facebook.columm1}></div>
-                            <div className={facebook.columm10}>
+                            <div className={facebook.columm1} style={{width: "calc((1.5*100%)/12)"}}></div>
+                            <div className={facebook.columm10} style={{width: "calc((9*100%)/12)"}}>
                                 <div className={facebook.columm10Product}>
                                     <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
                                         <div className={facebook.fetch}>Không có</div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={facebook.columm1}></div>
+                            <div className={facebook.columm1} style={{width: "calc((1.5*100%)/12)"}}></div>
                         </div>
                     </div>
                 </div>
@@ -102,8 +102,8 @@ function Title({ params }: { params: { title: string } }) {
             <div className={facebook.container} style={{ marginBottom: '50px' }}>
                 <div className={facebook.gird}>
                     <div className={facebook.row}>
-                        <div className={facebook.columm1Fixel}>
-                            <div className={facebook.columm1Left} >
+                        <div className={facebook.columm1Fixel} style={{display:'flex' , justifyContent:"center" , width: "calc((1.5*100%)/12)"}}>
+                            <div className={facebook.columm1Left} style={{width: "calc((1*100%)/1.5)"}}>
                                 <Tabs
                                     value={value}
                                     onChange={handleChange}
@@ -122,8 +122,8 @@ function Title({ params }: { params: { title: string } }) {
                                 </Tabs>
                             </div>
                         </div>
-                        <div className={facebook.columm1}></div>
-                        <div className={facebook.columm10}>
+                        <div className={facebook.columm1} style={{width: "calc((1.5*100%)/12)"}}></div>
+                        <div className={facebook.columm10} style={{width: "calc((9*100%)/12)"}}>
                             <div className={facebook.columm10Product}>
                                 <div className={`${facebook.row} ${facebook.rowcolumm10}`} style={{ minHeight: '550px' }}>
                                     <Contenthome items={datasort} />
@@ -131,7 +131,7 @@ function Title({ params }: { params: { title: string } }) {
                                 </div>
                             </div>
                         </div>
-                        <div className={facebook.columm1}></div>
+                        <div className={facebook.columm1} style={{width: "calc((1.5*100%)/12)"}}></div>
                     </div>
                 </div>
             </div>

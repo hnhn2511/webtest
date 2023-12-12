@@ -8,7 +8,7 @@ function Contenthome(props: IDatacop) {
 
     const { items } = props;
 
-    const itemsPerPage = 15;
+    const itemsPerPage = 8;
     const totalPages = Math.ceil(items.length / itemsPerPage);
 
     const paginatedData = Array.from({ length: totalPages }, (_, index) =>
@@ -27,11 +27,11 @@ function Contenthome(props: IDatacop) {
         <>
             {currentPageData.map(item => {
                 return (
-                    <div key={item.id} className={facebook.columm10columm}>
+                    <div key={item.id} className={`${facebook.columm10columm} ${facebook.columm10columm3}`}>
                         <div className={facebook.columm10colummContent}>
                             <Link href={`/video/watch/${item.Title}/${item.id}`} className={facebook.columm10colummContentlink}>
                                 <div className={facebook.columm10colummContentframe}>
-                                    <div className={facebook.columm10colummContentimg} style={{ backgroundImage: `url(${item.image}${item.imagesize})` }} title={item.Title}></div>
+                                    <div className={`${facebook.columm10colummContentimg} ${facebook.columm10colummContentimg60}`} style={{ backgroundImage: `url(${item.image}${item.imagesize})` }} title={item.Title}></div>
                                 </div>
                             </Link>
                             <Link href={`/video/watch/${item.Title}/${item.id}`} className={facebook.columm10colummContentlink}>

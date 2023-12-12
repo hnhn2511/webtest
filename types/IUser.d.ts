@@ -6,7 +6,13 @@ interface IParams {
 
 // Props /manga
 interface IDatacopManga {
-    itemsManga: itemManga[]
+    itemsManga: itemManga[];
+}
+
+interface IDatacopManga2 {
+    itemsManga: itemManga[];
+    itemsRoll : boolean;
+    itemsHeight : string
 }
 
 interface itemManga {
@@ -21,14 +27,6 @@ interface itemManga {
     Pagefull: {
         [episodeName: string]: Episode | string; // Danh sách các tập hoặc trạng thái rỗng (nếu chưa có trang)
     }
-}
-
-interface IDatacopMangachapter {
-    itemsName: string;
-    itemsPagefull: {
-        [episodeName: string]: Page; // Danh sách các tập hoặc trạng thái rỗng (nếu chưa có trang)
-    }
-    itemsEp: number
 }
 
 interface Episode {
