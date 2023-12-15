@@ -7,7 +7,7 @@ import HomeApp from '../../compunent/appHome';
 
 function Home() {
 
-    const { getdataVideo,getdataManga } = useContext(AppContext);
+    const { getdataVideo, getdataManga } = useContext(AppContext);
     const [dataVideo, setdataVideo] = useState<any[]>([]);
     const [dataManga, setdataManga] = useState<any[]>([]);
 
@@ -29,7 +29,7 @@ function Home() {
             setdataVideo(sortVideo);
         }
     }, [getdataVideo, getdataManga]);
-    
+
 
     if (!getdataVideo || dataVideo.length === 0 || !getdataManga || dataManga.length === 0) {
         return (
@@ -41,7 +41,7 @@ function Home() {
                             <div className={facebook.columm10}>
                                 <div className={facebook.columm10Product}>
                                     <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
-                                        <div className={facebook.fetch}></div>
+                                        <div className={facebook.fetch} style={{ height: `460px` }}></div>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@ function Home() {
     };
     return (
         <HomeApp itemsManga={dataManga} itemsVideo={dataVideo}/>
-        
+
     )
 }
 export default Home;
