@@ -247,7 +247,7 @@
 }
 
 .columm10columm3 {
-    width: calc(100%/4);
+    width: calc(100%/3);
 }
 
 
@@ -281,8 +281,8 @@
     will-change: transform;
 }
 
-.columm10colummContentimg60{
-    padding-top: 70%;
+.columm10colummContentimg60 {
+    padding-top: 60%;
 }
 
 .columm10colummContentimg:hover {
@@ -565,3 +565,65 @@
 
 }
 
+
+.columnheader {
+    /* border: 1px solid #ddd; Style và màu sắc viền cho header */
+    /* background-color : white; */
+    border-right: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-bottom: 2px solid #ddd;
+    /* background-color :rgba(255, 255, 255, 0.5) */
+    background-color : rgb(255, 255, 255);
+    color :rgb(0, 0, 0);
+
+}
+
+.columnheader:focus-within{
+    outline: unset !important;
+    outline-offset: unset
+}
+
+.columnheader2 {
+    /* border: 1px solid #ddd; Style và màu sắc viền cho header */
+    /* background-color : #f0f2f5; */
+    /* background-color :rgba(255, 255, 255, 0.5); */
+    background-color :rgb(255, 255, 255);
+    color :rgb(0, 0, 0);
+    border-right: 1px solid #7e7e7e;
+    border-bottom: 2px solid #ddd
+}
+
+.columncell {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    /* Style và màu sắc viền cho cell */
+}
+
+.columncell:focus-within {
+    outline: unset !important;
+    outline-offset: unset
+}
+
+.columncell2 {
+    border-right: 1px solid #ccc;
+}
+
+.columncell2:focus-within{
+    outline: unset !important;
+    outline-offset: unset
+}
+
+.fielda{
+    text-decoration: none;
+    color :#337ab7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 5px 0 0;
+}
+
+.fielda:hover{
+    text-decoration: underline;
+    color : #23527c
+
+}

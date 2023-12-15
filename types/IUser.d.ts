@@ -107,3 +107,9 @@ interface DataFromAPImanga {
 interface IGetdata {
     getdatas: item[]
 }
+
+// Home
+interface IHome{
+    itemsManga :itemManga[];
+    itemsVideo: item[]
+}
