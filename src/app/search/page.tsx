@@ -5,7 +5,7 @@ import { AppContext } from '../../../context/AppContext';
 import facebook from '../../../styles/facebook.module.css';
 import HomeApp from '../../../compunent/appHome';
 
-function searchHome({searchParams} :{searchParams:{q:string |undefined}}) {
+function Searchhome({searchParams} :{searchParams:{q:string |undefined}}) {
 
     // Lấy Query
     const search = searchParams.q;
@@ -66,4 +66,4 @@ function searchHome({searchParams} :{searchParams:{q:string |undefined}}) {
 
     )
 }
-export default searchHome;
+export default Searchhome;
