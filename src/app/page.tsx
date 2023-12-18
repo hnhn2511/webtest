@@ -7,20 +7,20 @@ import HomeApp from '../../compunent/appHome';
 
 function Home() {
 
-    const { getdataVideo, getdataManga } = useContext(AppContext);
+    const { getdataVideohome, getdataMangahome } = useContext(AppContext);
     const [dataVideo, setdataVideo] = useState<any[]>([]);
     const [dataManga, setdataManga] = useState<any[]>([]);
 
     useEffect(() => {
-        if (getdataManga && getdataVideo) {
-            const dataArrayManga = Object.keys(getdataManga).map((key, index) => {
+        if (getdataMangahome && getdataVideohome) {
+            const dataArrayManga = Object.keys(getdataMangahome).map((key, index) => {
                 const id = index + 1;
-                const item = getdataManga[key];
+                const item = getdataMangahome[key];
                 return { id, ...item };
             });
-            const dataArrayVideo = Object.keys(getdataVideo).map((key, index) => {
+            const dataArrayVideo = Object.keys(getdataVideohome).map((key, index) => {
                 const id = index + 1;
-                const item = getdataVideo[key];
+                const item = getdataVideohome[key];
                 return { id, ...item };
             });
             const sortManga = dataArrayManga?.sort((a: any, b: any) => b.id - a.id);
@@ -28,10 +28,10 @@ function Home() {
             setdataManga(sortManga);
             setdataVideo(sortVideo);
         }
-    }, [getdataVideo, getdataManga]);
+    }, [getdataVideohome, getdataMangahome]);
 
 
-    if (!getdataVideo || dataVideo.length === 0 || !getdataManga || dataManga.length === 0) {
+    if (!getdataVideohome || dataVideo.length === 0 || !getdataMangahome || dataManga.length === 0) {
         return (
             <>
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
@@ -41,7 +41,7 @@ function Home() {
                             <div className={facebook.columm10}>
                                 <div className={facebook.columm10Product}>
                                     <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
-                                        <div className={facebook.fetch} style={{ height: `460px` }}></div>
+                                        <div className={facebook.fetch} style={{ height: `529px` }}></div>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,9 @@ function Home() {
         )
     };
     return (
-        <HomeApp itemsManga={dataManga} itemsVideo={dataVideo}/>
+        <>
+            <HomeApp itemsManga={dataManga} itemsVideo={dataVideo} />
+        </>
 
     )
 }

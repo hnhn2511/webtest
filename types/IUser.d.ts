@@ -4,112 +4,79 @@ interface IParams {
 
 }
 
-// Props /manga
-interface IDatacopManga {
-    itemsManga: itemManga[];
-}
-
-interface IDatacopManga2 {
-    itemsManga: itemManga[];
-    itemsRoll : boolean;
-    itemsHeight : string
-}
-
-interface itemManga {
-    id: number,
-    name: string,
-    image: string,
-    Dayupload: string,
-    view: number,
-    thongtin: string,
-    code: string,
-    sotap: string,
-    Pagefull: {
-        [episodeName: string]: Episode | string; // Danh sách các tập hoặc trạng thái rỗng (nếu chưa có trang)
-    }
-}
-
-interface Episode {
-    [episodeName: string]: Page, // Danh sách các trang trong một tập
-}
-
-interface Page {
-    [pageNumber: string]: string, // Link của từng trang
-}
-
-
-// Props /video
-interface IDatacop {
-    items: item[]
-}
-
-interface item {
-    id: number,
-    Title: string,
-    image: string,
-    imagesize: string,
-    Dayupload: string,
-    view: number,
-    type: string,
-    streamwish: string,
-    maychukhac: string,
-    torrent: string,
-    imageinfo: string,
-    subject: string,
-    code: string,
-    imageinfosize: string,
-    stars: string,
-    starsinfo: string
-}
-
-
 // Context
 interface ContextProps {
     getinput: string,
     setInput: Dispatch<SetStateAction<string>>,
-    getdataVideo: DataFromAPI | null,
-    getdataManga: DataFromAPImanga | null
+    getdataVideohome:  DataFromAPIvideohome | null,
+    getdataMangahome:  DataFromAPImangahome | null
 }
-// getdataVideo
-interface DataFromAPI {
-    [key: string]: {
-        Title: string,
-        image: string,
-        imagesize: string,
-        Dayupload: string,
-        view: number,
-        type: string,
-        streamwish: string,
-        maychukhac: string,
-        torrent: string,
-        imageinfo: string,
-        subject: string,
-        code: string,
-        imageinfosize: string,
-        stars: string,
-        starsinfo: string
-    };
-}
-// getdataManga
-interface DataFromAPImanga {
+
+// getdataVideohome
+interface DataFromAPIvideohome {
     [key: string]: {
         name: string,
-        image: string,
         Dayupload: string,
-        view: number,
-        thongtin: string,
-        Pagefull: object,
-        code: string,
-        sotap: string
+        download: string,
+        type: string,
+        watch: string,
+        sub: string,
+        thongtin :string,
+        thum:string[],
+        bang:number
     };
 }
 
-interface IGetdata {
-    getdatas: item[]
+// getdataMangahome
+interface DataFromAPImangahome {
+    [key: string]: {
+        name: string,
+        Dayupload: string,
+        download: string,
+        type: string,
+        watch: string,
+        sub: string,
+        thongtin:string,
+        thum:string[],
+        bang:number
+    };
 }
 
-// Home
+// Props Home
 interface IHome{
-    itemsManga :itemManga[];
-    itemsVideo: item[]
+    itemsManga :itemMangahome[];
+    itemsVideo: itemVideohome[]
 }
+
+// Props View
+interface IView{
+    itemsBang :string,
+    itemsId: string
+}
+
+interface itemVideohome {
+    id: number,
+    name: string,
+    Dayupload: string,
+    type: string,
+    download: string,
+    watch: string,
+    sub: string,
+    thongtin:string,
+    thum:string[],
+    bang:number
+}
+
+interface itemMangahome {
+    id: number,
+    name: string,
+    Dayupload: string,
+    type: string,
+    download: string,
+    watch: string,
+    sub: string,
+    thongtin:string,
+    thum:string[],
+    bang:number
+}
+

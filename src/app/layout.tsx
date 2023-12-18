@@ -10,8 +10,8 @@ import { AppProvider } from '../../context/AppContext';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Trang chủ',
-  description: 'Thông tin của Lib Coop',
+  title: 'Tân Lang',
+  description: 'Trang tổng hợp Manga , Anime , Fc2 , Av , subtitle từ khắp mọi nơi trên Internet',
 }
 
 export default function RootLayout({

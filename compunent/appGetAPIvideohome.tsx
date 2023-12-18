@@ -2,15 +2,14 @@
 
 import useSWR from 'swr';
 
-const GetAPI = () => {
-
+const GetAPIvideohome = () => {
 
     // GET API
     const fetcher = (url: string) => fetch(url, {
         method: 'GET',
 
     }).then(res => res.json())
-    const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_DATABASE_URL, fetcher, {
+    const { data, error, isLoading } = useSWR(process.env.NEXT_PUBLIC_DATABASE_VIDEOHOME_URL, fetcher, {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,
@@ -18,5 +17,6 @@ const GetAPI = () => {
 
     return data
 
+    
 }
-export default GetAPI
+export default GetAPIvideohome
