@@ -37,15 +37,15 @@ function Home() {
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
                     <div className={facebook.gird}>
                         <div className={facebook.row}>
-                            <div className={facebook.columm1}></div>
-                            <div className={facebook.columm10}>
+                            <div className={facebook.columm1} style={{ width: 'calc((0.5*100%)/12)' }}></div>
+                            <div className={facebook.columm10} style={{ width: 'calc((11*100%)/12)' }}>
                                 <div className={facebook.columm10Product}>
                                     <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
                                         <div className={facebook.fetch} style={{ height: `529px` }}></div>
                                     </div>
                                 </div>
                             </div>
-                            <div className={facebook.columm1}></div>
+                            <div className={facebook.columm1} style={{ width: 'calc((0.5*100%)/12)' }}></div>
                         </div>
                     </div>
                 </div>

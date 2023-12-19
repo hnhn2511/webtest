@@ -54,10 +54,13 @@ function Headercontent(props: IColor) {
                         flex: '1', display: 'flex',
                         justifyContent: 'flex-start',
                         alignItems: 'center',
-                        padding: '0px 5px'
+                        paddingLeft: '5%'
                     }}>
-                        <img alt='Tân Lang' src='/logo.png' />
-                        <input value={getinput} onChange={(e) => setInput(e.target.value)} onKeyDown={getkey} className={facebook.headerNavbarsearch} placeholder={`Tìm kiếm`} ></input>
+                        <Link href='/' title='Tân Lang'>
+                        <img alt='Tân Lang' title='Tân Lang' src='/logo.png' />
+                        </Link>
+                        
+
                     </div>
                     <div style={{
                         flex: '1',
@@ -88,13 +91,21 @@ function Headercontent(props: IColor) {
                                 }}
                                 variant="text"
                                 disableRipple
+                                title='Trang Chủ'
                             >
                                 <FontAwesomeIcon icon={faHouse} style={{ color: setcolorHome, fontSize: '1.5rem' }} className={facebook.headerNavbarbtnIcon} />
 
                             </Button>
                         </Link>
                     </div>
-                    <div style={{ flex: '1' }}>
+                    <div style={{
+                        flex: '1', display: 'flex',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        paddingRight: '5%'
+
+                    }}>
+                        <input value={getinput} title='Tìm kiếm' onChange={(e) => setInput(e.target.value)} onKeyDown={getkey} className={facebook.headerNavbarsearch} placeholder={`Tìm kiếm`} ></input>
                     </div>
 
 
