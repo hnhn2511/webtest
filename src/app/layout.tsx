@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Tân Lang',
-  description: 'Trang tổng hợp Manga , Anime , Fc2 , Av , subtitle từ khắp mọi nơi trên Internet',
+  description: 'Trang Tổng Hợp Manga , Anime , Fc2 , Av , Subtitle Từ Khắp Mọi Nơi Trên Internet'
 }
 
 export default function RootLayout({

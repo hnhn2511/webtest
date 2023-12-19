@@ -71,14 +71,14 @@ function Thumview(props: IThumview) {
                                                 paddingRight: '15px',
                                                 width: 'calc((1*100%)/12)'
                                             }}>
-                                                <span title='Ngày' style={{fontSize :'0.95rem'}}>Ngày :</span>
+                                                <span title='Ngày' style={{ fontSize: '0.95rem' }}>Ngày :</span>
                                             </div>
                                             <div className={facebook.columm1} style={{
                                                 paddingLeft: '15px',
                                                 paddingRight: '15px',
                                                 width: 'calc((5*100%)/12)'
                                             }}>
-                                                <span title={itemsData.Dayupload} style={{fontSize :'0.95rem'}}>{itemsData.Dayupload}</span>
+                                                <span title={itemsData.Dayupload} style={{ fontSize: '0.95rem' }}>{itemsData.Dayupload}</span>
                                             </div>
 
 
@@ -235,7 +235,12 @@ function Thumview(props: IThumview) {
                                                         data-caption={`${itemsData.name}`}
                                                         data-title={`${itemsData.name}`}
                                                     >
-                                                        <img src={`${item}`} alt={`${itemsData.name}`} title={`${itemsData.name}`} style={{ cursor: 'pointer' }} />
+                                                        <img src={`${item}`} alt={`${itemsData.name}-hình ảnh ${index+1}`} title={`${itemsData.name}-hình ảnh ${index+1}`} style={{
+                                                            cursor: 'pointer',
+                                                            width: '100%',
+                                                            height: '100%',
+                                                            paddingBottom: '15px'
+                                                        }} />
                                                     </a>
                                                 )
                                             })}
