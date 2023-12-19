@@ -224,7 +224,7 @@ function Thumview(props: IThumview) {
 
 
                                 <div className={`${facebook.row} ${facebook.rowcolumm10} ${facebook.rowcolumm10iframe}`} style={{ border: '1px solid #ddd', marginTop: '30px', backgroundColor: '#fff' }}>
-                                    <div style={{ width: '100%' }}>
+                                    <div style={{ width: '100%' , minHeight: '550px' }}>
 
                                         <div style={{ textAlign: 'center', minHeight: '550px' }}>
                                             {itemsData.thum.map((item, index) => {
