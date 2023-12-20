@@ -28,8 +28,6 @@ function Thumview(props: IThumview) {
 
     const { itemsData } = props
 
-    const widthColumm: number = (((10.3 / 3) * (100 / 100)) / 10.3);
-
     useEffect(() => {
         Fancybox.bind('[data-fancybox="gallery"]', {
             // Các cấu hình khác có thể được thêm vào đây nếu cần
@@ -224,42 +222,31 @@ function Thumview(props: IThumview) {
                                     </div>
                                 </div>
 
-                                <div className={`${facebook.row} ${facebook.rowcolumm10} ${facebook.rowcolumm10iframe}`} style={{ border: '1px solid #ddd', margin : '0px' , marginTop: '30px', backgroundColor: '#fff',minHeight: '550px' ,padding: '7.5px 7.5px ' }}>
 
-                                    {itemsData.thum.map((item, index) => {
-                                        return (
-                                            <div key={index} className={`${facebook.columm1} ${facebook.columm15}`} style={{ width: "calc(100%/3)",
-                                            paddingLeft: '7.5px',
-                                            paddingRight: '7.5px',
-                                            paddingBottom: '7.5px',
-                                            paddingTop:'7.5px'}}>
+                                <div className={`${facebook.row} ${facebook.rowcolumm10} ${facebook.rowcolumm10iframe}`} style={{ border: '1px solid #ddd', marginTop: '30px', backgroundColor: '#fff' }}>
+                                    <div style={{ width: '100%' , minHeight: '550px' }}>
 
-                                                <div style={{ textAlign: 'center'}}>
-
-                                                    <a 
+                                        <div style={{ textAlign: 'center', minHeight: '550px' }}>
+                                            {itemsData.thum.map((item, index) => {
+                                                return (
+                                                    <a key={index}
                                                         data-fancybox="gallery"
-                                                        data-src={`${item}`}                           
+                                                        data-src={`${item}`}
+                                                        data-caption={`${itemsData.name}`}
                                                         data-title={`${itemsData.name}`}
                                                     >
-                                                        <img src={`${item}`} alt={`${itemsData.name}-hình ảnh ${index + 1}`} title={`${itemsData.name}-hình ảnh ${index + 1}`} style={{
+                                                        <img src={`${item}`} alt={`${itemsData.name}-hình ảnh ${index+1}`} title={`${itemsData.name}-hình ảnh ${index+1}`} style={{
                                                             cursor: 'pointer',
                                                             width: '100%',
-                                                            height: '100%',                                                        
+                                                            height: '100%',
+                                                            paddingBottom: '15px'
                                                         }} />
                                                     </a>
+                                                )
+                                            })}
 
-
-
-                                                </div>
-
-                                            </div>
-
-
-
-
-
-                                        )
-                                    })}
+                                        </div>
+                                    </div>
                                 </div>
 
                             </div>
