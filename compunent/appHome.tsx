@@ -1,11 +1,10 @@
 'use client'
 
 import facebook from '../styles/facebook.module.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import Link from 'next/link';
 import { DataGrid, GridCellParams } from '@mui/x-data-grid';
 import { Pagination } from '@mui/material';
-import Switch from '@mui/material/Switch';
 import IconButton from '@mui/material/IconButton';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import DownloadIcon from '@mui/icons-material/Download';
@@ -15,37 +14,9 @@ import slugify from 'slugify';
 
 function HomeApp(props: IHome) {
 
-    const { itemsManga, itemsVideo } = props
-
-    const [itemsdata, setItemsdata] = useState<any[]>(itemsManga);
-
-    const [checked, setChecked] = React.useState(false);
-
-    useEffect(() => {
-        if (checked === false) {
-            setItemsdata(itemsManga)
-        }
-        else {
-            setItemsdata(itemsVideo)
-        }
-
-    }, [itemsManga, itemsVideo])
-
-    // Switch onClick
-    const handleChangeClick = () => {
-        if (itemsdata === itemsManga) {
-            setItemsdata(itemsVideo);
-
-        } else {
-            setItemsdata(itemsManga);
-        }
-
-    }
-
-    // Switch
-    const handleChange5 = (event: any) => {
-        setChecked(event.target.checked);
-    };
+    const {itemsVideo } = props
+    
+    const itemsdata:any[] = itemsVideo;
 
     // Pagination
     const itemsPerPage = 10;
@@ -81,23 +52,7 @@ function HomeApp(props: IHome) {
 
     const columns: any = [
         {
-            field: 'type', renderHeader: (params: any) => (
-
-                <Switch
-                    checked={checked}
-                    onChange={handleChange5}
-                    color="primary"
-                    sx={{
-                        '& .MuiSwitch-track': {
-                            backgroundColor: '#8cbae8', // Màu của thanh dưới khi không kích hoạt
-                            opacity: 1, // Giữ cho màu sắc không thay đổi
-                        }
-                    }}
-                    style={{ color: '#1976d2' }}
-                    disableRipple
-                    onClick={handleChangeClick}
-                />
-            ),renderCell: (params: GridCellParams<any, any>) => {
+            field: 'type', headerName: 'Loại',renderCell: (params: GridCellParams<any, any>) => {
                 return (
                     <Link href={`/search?q=${slugify(params.value|| '', {
                         lower: true,

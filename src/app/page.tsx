@@ -7,31 +7,23 @@ import HomeApp from '../../compunent/appHome';
 
 function Home() {
 
-    const { getdataVideohome, getdataMangahome } = useContext(AppContext);
+    const { getdataVideohome} = useContext(AppContext);
     const [dataVideo, setdataVideo] = useState<any[]>([]);
-    const [dataManga, setdataManga] = useState<any[]>([]);
 
     useEffect(() => {
-        if (getdataMangahome && getdataVideohome) {
-            const dataArrayManga = Object.keys(getdataMangahome).map((key, index) => {
-                const id = index + 1;
-                const item = getdataMangahome[key];
-                return { id, ...item };
-            });
+        if (getdataVideohome) {
             const dataArrayVideo = Object.keys(getdataVideohome).map((key, index) => {
                 const id = index + 1;
                 const item = getdataVideohome[key];
                 return { id, ...item };
             });
-            const sortManga = dataArrayManga?.sort((a: any, b: any) => b.id - a.id);
             const sortVideo = dataArrayVideo?.sort((a: any, b: any) => b.id - a.id);
-            setdataManga(sortManga);
             setdataVideo(sortVideo);
         }
-    }, [getdataVideohome, getdataMangahome]);
+    }, [getdataVideohome]);
 
 
-    if (!getdataVideohome || dataVideo.length === 0 || !getdataMangahome || dataManga.length === 0) {
+    if (!getdataVideohome || dataVideo.length === 0 ) {
         return (
             <>
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
@@ -54,7 +46,7 @@ function Home() {
     };
     return (
         <>
-            <HomeApp itemsManga={dataManga} itemsVideo={dataVideo} />
+            <HomeApp itemsVideo={dataVideo} />
         </>
 
     )

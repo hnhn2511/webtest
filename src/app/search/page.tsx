@@ -10,33 +10,24 @@ function Searchhome({searchParams} :{searchParams:{q:string |undefined}}) {
     // Lấy Query
     const search = searchParams.q;
 
-    const { getdataVideohome, getdataMangahome } = useContext(AppContext);
+    const { getdataVideohome} = useContext(AppContext);
 
     const [dataVideosort, setdataVideoSort] = useState<any[]>([]);
-    const [dataMangasort, setdataMangaSort] = useState<any[]>([]);
 
     useEffect(() => {
-        if (getdataVideohome && getdataMangahome) {
+        if (getdataVideohome) {
             const dataArrayVideo = Object.keys(getdataVideohome).map((key, index) => {
                 const id = index + 1;
                 const item = getdataVideohome[key];
                 return { id, ...item };
             });
-            const dataArrayManga = Object.keys(getdataMangahome).map((key, index) => {
-                const id = index + 1;
-                const item = getdataMangahome[key];
-                return { id, ...item };
-            });
             const filteredDatavideo = dataArrayVideo.filter((a: any) => a.name.toLowerCase().includes(search?.toLowerCase()));
-            const filteredDatamanga = dataArrayManga.filter((a: any) => a.name.toLowerCase().includes(search?.toLowerCase()));
             const sortVideo = filteredDatavideo?.sort((a: any, b: any) => b.id - a.id);
-            const sortManga = filteredDatamanga?.sort((a: any, b: any) => b.id - a.id);
             setdataVideoSort(sortVideo);
-            setdataMangaSort(sortManga)
         }
-    }, [search, getdataVideohome, , getdataMangahome]);
+    }, [search, getdataVideohome]);
 
-    if (!getdataVideohome && !getdataMangahome && dataVideosort.length === 0 && dataMangasort.length === 0) {
+    if (!getdataVideohome && dataVideosort.length === 0 ) {
         return (
             <>
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
@@ -60,7 +51,7 @@ function Searchhome({searchParams} :{searchParams:{q:string |undefined}}) {
 
     return (
         <>
-            <HomeApp itemsManga={dataMangasort} itemsVideo={dataVideosort} />
+            <HomeApp itemsVideo={dataVideosort} />
 
         </>
 
