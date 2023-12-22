@@ -1,7 +1,7 @@
 'use client'
 
 import facebook from '../styles/facebook.module.css';
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { DataGrid, GridCellParams } from '@mui/x-data-grid';
 import { Pagination } from '@mui/material';
@@ -14,25 +14,36 @@ import slugify from 'slugify';
 
 function HomeApp(props: IHome) {
 
-    const {itemsVideo } = props
+    const { itemsVideo } = props
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const itemsdata: any[] | null = itemsVideo;
+
     
-    const itemsdata:any[] = itemsVideo;
 
     // Pagination
     const itemsPerPage = 10;
-    const totalPages = Math.ceil(itemsdata.length / itemsPerPage);
+    let totalPages = 0;
+    let currentPageData = [];
 
-    const paginatedData = Array.from({ length: totalPages }, (_, index) =>
-        itemsdata.slice(index * itemsPerPage, (index + 1) * itemsPerPage)
-    );
+    if (itemsdata) {
 
-    const [currentPage, setCurrentPage] = useState(1);
+        totalPages = Math.ceil(itemsdata.length / itemsPerPage);
+
+        const paginatedData = Array.from({ length: totalPages }, (_, index) =>
+            itemsdata.slice(index * itemsPerPage, (index + 1) * itemsPerPage)
+        );
+
+        currentPageData = paginatedData[currentPage - 1] || [];
+
+    }
+
 
     const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
         setCurrentPage(page);
     };
 
-    const currentPageData = paginatedData[currentPage - 1] || [];
 
     const CustomPagination = () => {
         return (
@@ -52,9 +63,9 @@ function HomeApp(props: IHome) {
 
     const columns: any = [
         {
-            field: 'type', headerName: 'Loại',renderCell: (params: GridCellParams<any, any>) => {
+            field: 'type', headerName: 'Loại', renderCell: (params: GridCellParams<any, any>) => {
                 return (
-                    <Link href={`/search?q=${slugify(params.value|| '', {
+                    <Link href={`/search?q=${slugify(params.value || '', {
                         lower: true,
                         locale: 'vi'
                     })}`} className={facebook.fielda} title={params.value}>
@@ -67,7 +78,7 @@ function HomeApp(props: IHome) {
         {
             field: 'name', headerName: 'Tên', renderCell: (params: GridCellParams<any, any>) => {
                 return (
-                    <Link href={`/view/${slugify(params.value, {
+                    <Link href={`/view/${slugify(params.row.code, {
                         lower: true,
                         locale: 'vi'
                     })}-p${params.row.id}.html?sbid=${params.row.bang}`} className={facebook.fielda} title={params.value}>
@@ -80,7 +91,7 @@ function HomeApp(props: IHome) {
         {
             field: 'link', headerName: 'Link', renderCell: (params: GridCellParams<any, any>) => (
                 <>
-                <IconButton aria-label="info"
+                    <IconButton aria-label="info"
                         style={{ marginRight: '-10px' }}
                         sx={{
                             '&:hover': {

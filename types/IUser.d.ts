@@ -22,18 +22,18 @@ interface DataFromAPIvideohome {
         sub: string,
         thongtin :string,
         thum:string[],
-        bang:number
+        bang:number,
+        code:string
     };
 }
 
 // Props Home
 interface IHome{
-    itemsVideo: itemVideohome[]
+    itemsVideo: itemVideohome[] | null
 }
 
 // Props View
 interface IView{
-    itemsBang :string,
     itemsId: string
 }
 
@@ -47,6 +47,7 @@ interface itemVideohome {
     sub: string,
     thongtin:string,
     thum:string[],
-    bang:number
+    bang:number,
+    code:string
 }
 

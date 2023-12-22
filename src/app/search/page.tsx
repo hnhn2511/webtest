@@ -5,14 +5,14 @@ import { AppContext } from '../../../context/AppContext';
 import facebook from '../../../styles/facebook.module.css';
 import HomeApp from '../../../compunent/appHome';
 
-function Searchhome({searchParams} :{searchParams:{q:string |undefined}}) {
+function Searchhome({ searchParams }: { searchParams: { q: string | undefined } }) {
 
     // Lấy Query
     const search = searchParams.q;
 
-    const { getdataVideohome} = useContext(AppContext);
+    const { getdataVideohome } = useContext(AppContext);
 
-    const [dataVideosort, setdataVideoSort] = useState<any[]>([]);
+    const [dataVideosort, setdataVideoSort] = useState<any[] | null>(null);
 
     useEffect(() => {
         if (getdataVideohome) {
@@ -27,7 +27,7 @@ function Searchhome({searchParams} :{searchParams:{q:string |undefined}}) {
         }
     }, [search, getdataVideohome]);
 
-    if (!getdataVideohome && dataVideosort.length === 0 ) {
+    if (!getdataVideohome && !dataVideosort) {
         return (
             <>
                 <div className={facebook.container} style={{ marginBottom: '50px' }}>
@@ -37,7 +37,7 @@ function Searchhome({searchParams} :{searchParams:{q:string |undefined}}) {
                             <div className={facebook.columm10} style={{ width: "calc((11*100%)/12)" }}>
                                 <div className={facebook.columm10Product}>
                                     <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
-                                        <div className={facebook.fetch} style={{minHeight:'529px'}}>loading...</div>
+                                        <div className={facebook.fetch} style={{ minHeight: '529px' }}>loading...</div>
                                     </div>
                                 </div>
                             </div>
@@ -48,6 +48,30 @@ function Searchhome({searchParams} :{searchParams:{q:string |undefined}}) {
             </>
         )
     };
+
+    if (getdataVideohome && !dataVideosort) {
+        return (
+            <>
+                <div className={facebook.container} style={{ marginBottom: '50px' }}>
+                    <div className={facebook.gird}>
+                        <div className={facebook.row}>
+                            <div className={facebook.columm1} style={{ width: "calc((0.5*100%)/12)" }}></div>
+                            <div className={facebook.columm10} style={{ width: "calc((11*100%)/12)" }}>
+                                <div className={facebook.columm10Product}>
+                                    <div className={`${facebook.row} ${facebook.rowcolumm10}`}>
+                                        <div className={facebook.fetch} style={{ minHeight: '529px' }}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={facebook.columm1} style={{ width: "calc((0.5*100%)/12)" }}></div>
+                        </div>
+                    </div>
+                </div>
+            </>
+        )
+    };
+
+
 
     return (
         <>

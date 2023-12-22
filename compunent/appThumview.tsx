@@ -20,15 +20,14 @@ interface IThumview {
         sub: string,
         thongtin: string,
         thum: string[],
-        bang: number
+        bang: number,
+        code:string
     }
 }
 
 function Thumview(props: IThumview) {
 
     const { itemsData } = props
-
-    const widthColumm: number = (((10.3 / 3) * (100 / 100)) / 10.3);
 
     useEffect(() => {
         Fancybox.bind('[data-fancybox="gallery"]', {

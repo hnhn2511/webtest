@@ -2,18 +2,18 @@
 
 import useSWR from 'swr';
 import facebook from '../styles/facebook.module.css';
-import ThumView from '../compunent/appThumview';
+import ThumView from './appThumview';
 
 function View(props : IView) {
 
-    const {itemsBang , itemsId} = props
+    const {itemsId} = props
 
     // GET API
     const fetcher = (url: string) => fetch(url, {
         method: 'GET',
 
     }).then(res => res.json())
-    const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_DATABASE}/${itemsBang}/id${itemsId}.json`, fetcher, {
+    const { data, error, isLoading } = useSWR(`${process.env.NEXT_PUBLIC_DATABASE}/videohome/id${itemsId}.json`, fetcher, {
         revalidateIfStale: false,
         revalidateOnFocus: false,
         revalidateOnReconnect: false,

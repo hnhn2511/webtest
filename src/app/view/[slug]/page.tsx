@@ -1,20 +1,18 @@
 
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 import View from '../../../../compunent/appView';
 
-export function generateMetadata(
-    { searchParams, params }: { searchParams: { spid: number | undefined }; params: { slug: string } },
-    parent: ResolvingMetadata
+export async function generateMetadata(
+    { searchParams, params }: { searchParams: { sbid: number | undefined }; params: { slug: string } }
 ): Promise<Metadata> {
 
-    // read route params
+    // Lấy id
     const slug = params.slug;
-    const parts = slug.split('-p')[0]
+    const parts = slug.split('-p')[1]
+    const parts2 = parts.split('.html')[0]
 
-    // Bước 1: Loại bỏ dấu gạch ngang và chuyển đổi chữ cái đầu mỗi từ thành in hoa
-    let words: string[] = parts.split("-");
-    let processedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
-    let word2 = decodeURIComponent(processedWords);
+    // fetch data
+    const product = await fetch(`${process.env.NEXT_PUBLIC_DATABASE}/videohome/id${parts2}.json`).then((res) => res.json())
 
     // Giới hạn số từ trong chuỗi
     function limitWords(string: string, wordLimit: number) {
@@ -22,10 +20,10 @@ export function generateMetadata(
         let truncated = words.slice(0, wordLimit).join(' ');
         return truncated;
     }
-    const wordlimit = limitWords(word2, 15)
+    const wordlimit = limitWords(product.name, 15)
 
     return Promise.resolve({
-        title: `Xem ${word2} tại tanlang.click - Miễn Phí Anime Manga JAV Online`,
+        title: `Xem ${product.name} tại tanlang.click - Miễn Phí Anime Manga JAV Online`,
         description: `Trang Tổng Hợp Manga , Anime , Fc2 , Av , Subtitle Từ Khắp Mọi Nơi Trên Internet , ${wordlimit}`,
     });
 }
@@ -34,25 +32,13 @@ function Title({ searchParams, params }: { searchParams: { sbid: number | undefi
 
     // Lấy id
     const slug = params.slug;
-    const parts = slug.split('-p')[1]
-    const parts2 = parts.split('.html')[0]
-
-    // Lấy bảng
-    const bangid = searchParams.sbid;
-
-    let bang = '';
-
-    if (bangid == 1) {
-        bang = 'mangahome'
-    }
-    if (bangid == 2) {
-        bang = 'videohome'
-    }
+    const parts = slug.split('-p')[1];
+    const parts2 = parts.split('.html')[0];
 
     return (
         <>
 
-            <View itemsBang={bang} itemsId={parts2} />
+            <View itemsId={parts2} />
 
         </>
 
