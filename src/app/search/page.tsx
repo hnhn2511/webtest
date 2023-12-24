@@ -16,10 +16,12 @@ function Searchhome({ searchParams }: { searchParams: { q: string | undefined } 
 
     useEffect(() => {
         if (getdataVideohome) {
-            const dataArrayVideo = Object.keys(getdataVideohome).map((key, index) => {
-                const id = index + 1;
-                const item = getdataVideohome[key];
-                return { id, ...item };
+            // Chuyển đổi thành mảng
+            const dataArrayVideo = Object.keys(getdataVideohome).map((key) => {
+                return {
+                    id: parseInt(key.replace("id", "")), // Lấy số từ chuỗi key
+                    ...getdataVideohome[key]
+                };
             });
             const filteredDatavideo = dataArrayVideo.filter((a: any) => a.name.toLowerCase().includes(search?.toLowerCase()));
             const sortVideo = filteredDatavideo?.sort((a: any, b: any) => b.id - a.id);

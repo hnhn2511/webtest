@@ -86,7 +86,7 @@ function HomeApp(props: IHome) {
                     </Link>
                 )
 
-            }, flex: 1.45, headerClassName: `${facebook.columnheader2}`, cellClassName: `${facebook.columncell2}`
+            }, flex: 1.45, sortable: false, headerClassName: `${facebook.columnheader2}`, cellClassName: `${facebook.columncell2}`
         },
         {
             field: 'link', headerName: 'Link', renderCell: (params: GridCellParams<any, any>) => (
@@ -189,7 +189,7 @@ function HomeApp(props: IHome) {
 
             ), align: 'center', flex: 0.25, headerAlign: 'center', disableColumnMenu: true, sortable: false, headerClassName: `${facebook.columnheader2}`, cellClassName: `${facebook.columncell2}`
         },
-        { field: 'Dayupload', headerName: 'Ngày', align: 'center', flex: 0.2, headerAlign: 'center', headerClassName: `${facebook.columnheader2}`, cellClassName: `${facebook.columncell2}` },
+        { field: 'Dayupload', headerName: 'Ngày', align: 'center', flex: 0.2, headerAlign: 'center', sortable: false, headerClassName: `${facebook.columnheader2}`, cellClassName: `${facebook.columncell2}` },
     ];
 
     return (
